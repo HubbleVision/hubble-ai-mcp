@@ -1,0 +1,42 @@
+{
+  "name": "text2sql-mcp-tool",
+  "version": "0.1.6",
+  "description": "MCP server for text2sql",
+  "license": "MIT",
+  "keywords": [
+    "modelcontextprotocol",
+    "mcp",
+    "mcp-server",
+    "text2sql"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adaHubble/hubble-ai-mcp.git"
+  },
+  "author": "",
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
+  "bin": {
+    "text2sql-mcp-tool": "dist/index.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc && shx chmod +x dist/*.js",
+    "prepare": "npm run build",
+    "watch": "tsc --watch"
+  },
+  "dependencies": {
+    "@mastra/client-js": "^0.1.7",
+    "@modelcontextprotocol/sdk": "^1.0.3",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22",
+    "shx": "^0.3.4",
+    "typescript": "^5.7.2"
+  }
+}
