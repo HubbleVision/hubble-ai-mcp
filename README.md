@@ -9,7 +9,7 @@ You can ask any question about pumpfun data.
   "mcpServers": {
     "hubble-tool": {
       "command": "npx",
-      "args": ["-y", "text2sql-mcp-tool"]
+      "args": ["-y", "hubble-mcp-tool"]
     }
   }
 }
