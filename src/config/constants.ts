@@ -1,5 +1,6 @@
 // API endpoints and service configurations
-export const QUICKCHART_BASE_URL = "https://quickchart.io/chart";
+export const QUICKCHART_BASE_URL =
+  "https://quickchart-proxy.vercel.app/api/chart";
 export const HUBBLE_API_URL = "http://ai-api.hubble-rpc.xyz";
 
 // Server configuration

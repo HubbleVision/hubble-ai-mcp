@@ -1,13 +1,13 @@
 {
-  "name": "text2sql-mcp-tool",
+  "name": "@hubble/hubble-mcp-tool",
   "version": "0.1.7",
-  "description": "MCP server for text2sql",
+  "description": "MCP server for Hubble",
   "license": "MIT",
   "keywords": [
     "modelcontextprotocol",
     "mcp",
     "mcp-server",
-    "text2sql"
+    "hubble"
   ],
   "repository": {
     "type": "git",
@@ -19,7 +19,7 @@
     "node": ">=18"
   },
   "bin": {
-    "text2sql-mcp-tool": "dist/index.js"
+    "@hubble/hubble-mcp-tool": "dist/index.js"
   },
   "files": [
     "dist"
