@@ -6,7 +6,7 @@ export const HUBBLE_API_URL = "http://ai-api.hubble-rpc.xyz";
 // Server configuration
 export const SERVER_CONFIG = {
   name: "hubble-tool",
-  version: "1.0.1",
+  version: "2.0.0",
 };
 
 // Tool names
