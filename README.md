@@ -1,14 +1,14 @@
-# Hubble AI MCP Server
+# Hubble AI for Solana
 
-Hubble is a solana MCP server that can do data analysis and visualization for transactions on pumpfun and DEXs with natrual language.
+Hubble is an AI-powered analytics tool that provides data analysis and visualization for Solana blockchain transactions with natural language queries.
 
 ## Overview
 
-This MCP server provides tools to query Pumpfun blockchain data and generate visualizations through the Hubble API. It integrates with AI assistants that support the Model Context Protocol, allowing them to fetch real-time Pumpfun data and create charts based on that data.
+Hubble enables you to query blockchain data and generate visualizations through a simple interface. It integrates with AI assistants to deliver real-time blockchain insights and create visual representations of that data.
 
 ## Installation
 
-Add the Hubble MCP server to your MCP configuration file:
+Add Hubble to your configuration:
 
 ```json
 {
@@ -21,77 +21,43 @@ Add the Hubble MCP server to your MCP configuration file:
 }
 ```
 
-## Available Tools
+## Features
 
-### 1. search-hubble
+### Data Querying
 
-Query the Hubble API for Pumpfun blockchain data.
+Access blockchain data with natural language queries:
 
-**Example queries:**
+- View recent transactions
+- Check current prices
+- Identify top token holders
+- Analyze transaction patterns
 
-- "latest pumpfun txn"
-- "show me the latest 10 pumpfun transactions"
-- "get the latest 5 pumpfun transactions and generate a chart"
-- "what is the current pumpfun price"
-- "top pumpfun holders"
+### Data Visualization
 
-### 2. generate_chart
+Generate charts to visualize blockchain data:
 
-Generate charts to visualize Pumpfun data using QuickChart.
-
-Supports various chart types:
-
-- Bar charts
-- Line charts
-- Pie charts
-- Doughnut charts
-- Radar charts
-- And more
-
-### 3. download_chart
-
-Download generated chart images to a local file.
+- Transaction volume trends
+- Price movements over time
+- Distribution analytics
+- Custom visualizations based on your queries
 
 ## Usage Examples
 
-### Basic Query
-
-Ask about recent Pumpfun transactions:
+### Basic Queries
 
 ```
-get the latest 5 pumpfun transactions and generate a chart
+"Show me the latest blockchain transactions"
+"What is the current token price?"
+"Who are the top token holders?"
 ```
 
-### Query with Specific Count
-
-Request a specific number of transactions:
+### Visualization Queries
 
 ```
-show me the latest 10 pumpfun transactions
+"Generate a chart of transaction volume for the last week"
+"Create a line chart of price trends for the past month"
+"Show a pie chart of top transactions by value"
 ```
-
-### Query with Chart Generation
-
-Request transactions and generate a visualization in one query:
-
-```
-get the latest 5 pumpfun transactions and generate a chart
-```
-
-### Data Visualization Examples
-
-- Transaction volume over time: `generate chart of pumpfun transaction volume for the last 7 days`
-- Price trends: `create a line chart of pumpfun price for the past month`
-- Transaction distribution: `show pie chart of top 10 pumpfun transactions by value`
-
-## Development
-
-Built with:
-
-- TypeScript
-- Model Context Protocol SDK
-- Mastra Client for Hubble API integration
-- QuickChart for data visualization
 
 ## License
 
