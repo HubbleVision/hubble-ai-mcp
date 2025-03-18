@@ -1,0 +1,8 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# Increment version
+node scripts/version-bump.js
+
+# Add the updated package.json to the commit
+git add package.json 

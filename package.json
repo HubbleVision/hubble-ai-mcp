@@ -1,6 +1,6 @@
 {
   "name": "hubble-mcp-tool",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "description": "MCP server for Hubble",
   "license": "MIT",
   "keywords": [
@@ -27,7 +27,8 @@
   "scripts": {
     "build": "tsc && shx chmod +x dist/*.js",
     "prepare": "npm run build",
-    "watch": "tsc --watch"
+    "watch": "tsc --watch",
+    "version-bump": "node scripts/version-bump.js"
   },
   "dependencies": {
     "@mastra/client-js": "^0.1.7",
