@@ -20,7 +20,7 @@ export class SearchHubbleTool {
   getDefinition() {
     return {
       name: TOOL_NAMES.SEARCH_HUBBLE,
-      description: "Get pumpfun data from Hubble",
+      description: "Get pumpfun data and solana DEX data from Hubble",
       inputSchema: {
         type: "object",
         properties: {
