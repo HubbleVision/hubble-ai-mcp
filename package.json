@@ -1,6 +1,6 @@
 {
   "name": "hubble-mcp-tool",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "description": "MCP server for Hubble",
   "license": "MIT",
   "keywords": [
@@ -31,7 +31,6 @@
     "version-bump": "node scripts/version-bump.js"
   },
   "dependencies": {
-    "@mastra/client-js": "^0.1.7",
     "@modelcontextprotocol/sdk": "^1.0.3",
     "axios": "^1.8.3",
     "zod": "^3.24.1"

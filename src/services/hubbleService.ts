@@ -1,4 +1,3 @@
-import { MastraClient } from "@mastra/client-js";
 import { HUBBLE_API_URL } from "../config/constants.js";
 import { ErrorHandler } from "../utils/errors.js";
 
@@ -6,13 +5,6 @@ import { ErrorHandler } from "../utils/errors.js";
  * Service for handling Hubble API interactions
  */
 export class HubbleService {
-  private client: MastraClient;
-
-  constructor() {
-    this.client = new MastraClient({
-      baseUrl: HUBBLE_API_URL,
-    });
-  }
 
   /**
    * Executes a search query against the Hubble API
@@ -44,7 +36,7 @@ export class HubbleService {
             }),
           }
         );
-  
+      
       return await resultStart.json();
     } catch (error) {
       throw ErrorHandler.handleError(error, "Failed to search Hubble");
