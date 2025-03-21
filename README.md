@@ -15,7 +15,10 @@ Add Hubble to your configuration:
   "mcpServers": {
     "hubble-tool": {
       "command": "npx",
-      "args": ["-y", "hubble-mcp-tool"]
+      "args": ["-y", "hubble-mcp-tool"],
+      "env": {
+        "HUBBLE_API_KEY": "your_api_key"
+      }
     }
   }
 }
