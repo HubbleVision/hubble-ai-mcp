@@ -66,7 +66,9 @@ export class GenerateChartTool {
   async execute(args: unknown): Promise<any> {
     try {
       if (!args) {
-        throw ErrorHandler.createInvalidParamsError("Arguments are required for generate_chart");
+        throw ErrorHandler.createInvalidParamsError(
+          "Arguments are required for generate_chart"
+        );
       }
 
       // Validate and parse the arguments with Zod
@@ -74,11 +76,12 @@ export class GenerateChartTool {
       const config = ChartService.generateChartConfig(validatedArgs);
       const url = await ChartService.generateChartUrl(config);
 
+      const markdownImage = `![Chart](${url})`;
       return {
         content: [
           {
-            type: "text",
-            text: url,
+            type: "markdown",
+            content: markdownImage,
           },
         ],
       };

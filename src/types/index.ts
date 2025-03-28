@@ -93,3 +93,38 @@ export const downloadChartArgsSchema = z.object({
 });
 
 export type DownloadChartArgs = z.infer<typeof downloadChartArgsSchema>;
+
+// Table tool schema
+export const generateTableArgsSchema = z.object({
+  data: z
+    .array(z.array(z.union([z.string(), z.number(), z.null()])))
+    .describe(
+      "2D array of data for the table. First row can be used as headers if columns not provided. Use ['-'] for separator rows."
+    ),
+  columns: z
+    .array(z.string())
+    .optional()
+    .describe(
+      "Optional column headers. If not provided, first row of data will be used as headers."
+    ),
+  title: z.string().optional().describe("Optional title for the table"),
+  tableOptions: z
+    .object({
+      alignment: z
+        .array(z.enum(["left", "center", "right"]))
+        .optional()
+        .describe("Optional alignment for each column"),
+      compact: z
+        .boolean()
+        .optional()
+        .describe("Whether to generate a compact table with less whitespace"),
+      showTitle: z
+        .boolean()
+        .optional()
+        .describe("Whether to show the title above the table"),
+    })
+    .optional()
+    .describe("Optional styling options for the markdown table"),
+});
+
+export type GenerateTableArgs = z.infer<typeof generateTableArgsSchema>;

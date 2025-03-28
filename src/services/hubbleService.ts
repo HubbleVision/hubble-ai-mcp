@@ -39,7 +39,21 @@ export class HubbleService {
         }
       );
 
-      return await resultStart.json();
+      const responseJson = await resultStart.json();
+
+      // Extract the output field from the response
+      if (
+        responseJson &&
+        responseJson.context &&
+        responseJson.context.steps &&
+        responseJson.context.steps.text2sql &&
+        responseJson.context.steps.text2sql.output
+      ) {
+        return responseJson.context.steps.text2sql.output;
+      }
+
+      // Return the full response if the output field is not found
+      return responseJson;
     } catch (error) {
       throw ErrorHandler.handleError(error, "Failed to search Hubble");
     }

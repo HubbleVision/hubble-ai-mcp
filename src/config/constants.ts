@@ -14,4 +14,5 @@ export const TOOL_NAMES = {
   SEARCH_HUBBLE: "search-hubble",
   GENERATE_CHART: "generate_chart",
   DOWNLOAD_CHART: "download_chart",
+  GENERATE_TABLE: "generate_table",
 } as const;
