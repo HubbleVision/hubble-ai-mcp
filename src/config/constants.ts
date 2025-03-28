@@ -12,7 +12,6 @@ export const SERVER_CONFIG = {
 // Tool names
 export const TOOL_NAMES = {
   SEARCH_HUBBLE: "search-hubble",
-  GENERATE_CHART: "generate_chart",
-  DOWNLOAD_CHART: "download_chart",
-  GENERATE_TABLE: "generate_table",
+  GENERATE_CHART: "generate-chart",
+  DOWNLOAD_CHART: "download-chart",
 } as const;

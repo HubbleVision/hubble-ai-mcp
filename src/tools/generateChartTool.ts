@@ -14,7 +14,8 @@ export class GenerateChartTool {
   getDefinition() {
     return {
       name: TOOL_NAMES.GENERATE_CHART,
-      description: "Generate a chart using QuickChart",
+      description:
+        "Generate a chart using QuickChart. Returns a URL to the chart image. Should be rendered in a markdown image",
       inputSchema: {
         type: "object",
         properties: {
@@ -76,12 +77,11 @@ export class GenerateChartTool {
       const config = ChartService.generateChartConfig(validatedArgs);
       const url = await ChartService.generateChartUrl(config);
 
-      const markdownImage = `![Chart](${url})`;
       return {
         content: [
           {
-            type: "markdown",
-            content: markdownImage,
+            type: "text",
+            content: url,
           },
         ],
       };
