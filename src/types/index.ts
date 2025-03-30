@@ -22,6 +22,7 @@ export interface ChartDataset {
   data: number[] | Array<number[]>;
   backgroundColor?: string | string[];
   borderColor?: string | string[];
+  borderWidth?: number;
   [key: string]: any;
 }
 
@@ -78,6 +79,7 @@ export const generateChartArgsSchema = z.object({
         z.string(),
         z.array(z.string()),
       ]).optional(),
+      borderWidth: z.number().optional(),
       additionalConfig: z.record(z.any()).optional(),
     })
   ),

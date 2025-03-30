@@ -15,46 +15,73 @@ export class GenerateChartTool {
     return {
       name: TOOL_NAMES.GENERATE_CHART,
       description:
-        "Generate a chart using QuickChart. Returns a URL to the chart image. Should be rendered in a markdown image",
+        "Generate a chart using QuickChart API. Supports basic chart types (bar, line, pie). Customizable with colors, labels, and advanced chart options.",
       inputSchema: {
         type: "object",
         properties: {
           type: {
             type: "string",
             description:
-              "Chart type (bar, line, pie, doughnut, radar, polarArea, scatter, bubble, radialGauge, speedometer)",
+              "Chart type. Basic types: bar (vertical/stacked), line (smooth/straight), pie (regular/donut)",
           },
           labels: {
             type: "array",
             items: { type: "string" },
-            description: "Labels for data points",
+            description:
+              "Category labels for the x-axis or data points. For pie/doughnut charts, these are the segment labels",
           },
           datasets: {
             type: "array",
             items: {
               type: "object",
               properties: {
-                label: { type: "string" },
-                data: { type: "array" },
+                label: {
+                  type: "string",
+                  description: "Legend label for this dataset",
+                },
+                data: {
+                  type: "array",
+                  description:
+                    "Data values. For basic charts: array of numbers",
+                },
                 backgroundColor: {
                   oneOf: [
                     { type: "string" },
                     { type: "array", items: { type: "string" } },
                   ],
+                  description:
+                    "Fill color(s) for the dataset. Can be a single color or array of colors. Supports RGB, RGBA, and named colors",
                 },
                 borderColor: {
                   oneOf: [
                     { type: "string" },
                     { type: "array", items: { type: "string" } },
                   ],
+                  description:
+                    "Border/line color(s) for the dataset. Can be a single color or array of colors. Supports RGB, RGBA, and named colors",
                 },
-                additionalConfig: { type: "object" },
+                borderWidth: {
+                  type: "number",
+                  description: "Width of the border around each data element",
+                },
+                additionalConfig: {
+                  type: "object",
+                  description:
+                    "Additional chart.js configuration options specific to the chart type (e.g. tension, fill)",
+                },
               },
               required: ["data"],
             },
           },
-          title: { type: "string" },
-          options: { type: "object" },
+          title: {
+            type: "string",
+            description: "Chart title displayed at the top of the chart",
+          },
+          options: {
+            type: "object",
+            description:
+              "Advanced chart.js options for customizing scales, legends, tooltips, and other chart features",
+          },
         },
         required: ["type", "datasets"],
       },
@@ -81,7 +108,7 @@ export class GenerateChartTool {
         content: [
           {
             type: "text",
-            content: url,
+            text: url,
           },
         ],
       };

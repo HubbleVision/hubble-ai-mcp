@@ -1,6 +1,6 @@
 {
   "name": "hubble-mcp-tool",
-  "version": "0.1.18",
+  "version": "0.1.19",
   "description": "MCP server for Hubble",
   "license": "MIT",
   "keywords": [
@@ -25,6 +25,7 @@
     "dist"
   ],
   "scripts": {
+    "start": "node --loader ts-node/esm src/index.ts",
     "build": "tsc && shx chmod +x dist/*.js",
     "prepare": "npm run build",
     "watch": "tsc --watch",
@@ -34,6 +35,7 @@
     "@modelcontextprotocol/sdk": "^1.0.3",
     "axios": "^1.8.3",
     "dotenv": "^16.4.7",
+    "ts-node": "^10.9.2",
     "zod": "^3.24.1"
   },
   "devDependencies": {

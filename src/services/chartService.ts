@@ -33,13 +33,29 @@ export class ChartService {
       type: type as ChartType,
       data: {
         labels: labels || [],
-        datasets: datasets.map((dataset: any) => ({
-          label: dataset.label || "",
-          data: dataset.data,
-          backgroundColor: dataset.backgroundColor,
-          borderColor: dataset.borderColor,
-          ...dataset.additionalConfig,
-        })),
+        datasets: datasets.map((dataset: any) => {
+          // Extract known properties
+          const { label, data, backgroundColor, borderColor, borderWidth, additionalConfig = {} } = dataset;
+          
+          // Create dataset with known properties
+          const chartDataset: any = {
+            label: label || "",
+            data: data,
+            backgroundColor: backgroundColor,
+            borderColor: borderColor,
+          };
+          
+          // Add borderWidth if provided
+          if (borderWidth !== undefined) {
+            chartDataset.borderWidth = borderWidth;
+          }
+          
+          // Add any additional properties from additionalConfig
+          return {
+            ...chartDataset,
+            ...additionalConfig,
+          };
+        }),
       },
       options: {
         ...options,
@@ -94,7 +110,7 @@ export class ChartService {
    */
   static async generateChartUrl(config: ChartConfig): Promise<string> {
     const encodedConfig = encodeURIComponent(JSON.stringify(config));
-    return `${QUICKCHART_BASE_URL}?c=${encodedConfig}`;
+    return `${QUICKCHART_BASE_URL}&c=${encodedConfig}`;
   }
 
   /**

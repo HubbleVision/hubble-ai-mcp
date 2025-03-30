@@ -33,6 +33,18 @@ async function testQuickChart() {
     
     // 测试仪表盘
     await testGaugeChart(outputDir);
+
+    // 测试环形图
+    await testDoughnutChart(outputDir);
+
+    // 测试散点图
+    await testScatterChart(outputDir);
+
+    // 测试气泡图
+    await testBubbleChart(outputDir);
+
+    // 测试堆叠柱状图
+    await testStackedBarChart(outputDir);
     
     console.log("QuickChart 测试完成！所有图表已保存到:", outputDir);
   } catch (error) {
@@ -215,6 +227,190 @@ async function testGaugeChart(outputDir: string) {
   const outputPath = path.join(outputDir, "gauge-chart.png");
   await downloadImage(url, outputPath);
   console.log("仪表盘已保存到:", outputPath);
+}
+
+/**
+ * 测试环形图
+ */
+async function testDoughnutChart(outputDir: string) {
+  const config = ChartService.generateChartConfig({
+    type: "doughnut",
+    title: "收入来源分布",
+    labels: ["在线销售", "实体店", "代理商", "其他渠道"],
+    datasets: [{
+      data: [45, 25, 20, 10],
+      backgroundColor: [
+        "rgba(255, 99, 132, 0.8)",
+        "rgba(54, 162, 235, 0.8)",
+        "rgba(255, 206, 86, 0.8)",
+        "rgba(75, 192, 192, 0.8)"
+      ],
+      borderWidth: 1
+    }],
+    options: {
+      cutout: '60%',
+      plugins: {
+        legend: {
+          position: 'right'
+        }
+      }
+    }
+  });
+
+  const url = await ChartService.generateChartUrl(config);
+  console.log("环形图 URL:", url);
+  
+  const outputPath = path.join(outputDir, "doughnut-chart.png");
+  await downloadImage(url, outputPath);
+  console.log("环形图已保存到:", outputPath);
+}
+
+/**
+ * 测试散点图
+ */
+async function testScatterChart(outputDir: string) {
+  const config = ChartService.generateChartConfig({
+    type: "scatter",
+    title: "身高体重分布",
+    datasets: [{
+      label: "男性",
+      data: [
+        { x: 170, y: 65 },
+        { x: 175, y: 70 },
+        { x: 180, y: 75 },
+        { x: 165, y: 60 },
+        { x: 185, y: 80 }
+      ],
+      backgroundColor: "rgba(54, 162, 235, 0.5)"
+    }, {
+      label: "女性",
+      data: [
+        { x: 160, y: 50 },
+        { x: 165, y: 55 },
+        { x: 170, y: 60 },
+        { x: 155, y: 45 },
+        { x: 175, y: 65 }
+      ],
+      backgroundColor: "rgba(255, 99, 132, 0.5)"
+    }],
+    options: {
+      scales: {
+        x: {
+          title: {
+            display: true,
+            text: '身高 (cm)'
+          }
+        },
+        y: {
+          title: {
+            display: true,
+            text: '体重 (kg)'
+          }
+        }
+      }
+    }
+  });
+
+  const url = await ChartService.generateChartUrl(config);
+  console.log("散点图 URL:", url);
+  
+  const outputPath = path.join(outputDir, "scatter-chart.png");
+  await downloadImage(url, outputPath);
+  console.log("散点图已保存到:", outputPath);
+}
+
+/**
+ * 测试气泡图
+ */
+async function testBubbleChart(outputDir: string) {
+  const config = ChartService.generateChartConfig({
+    type: "bubble",
+    title: "城市数据分析",
+    datasets: [{
+      label: "城市指标",
+      data: [
+        { x: 80, y: 75, r: 20 },  // GDP, 生活质量, 人口
+        { x: 65, y: 85, r: 15 },
+        { x: 90, y: 65, r: 25 },
+        { x: 70, y: 90, r: 10 }
+      ],
+      backgroundColor: [
+        "rgba(255, 99, 132, 0.5)",
+        "rgba(54, 162, 235, 0.5)",
+        "rgba(255, 206, 86, 0.5)",
+        "rgba(75, 192, 192, 0.5)"
+      ]
+    }],
+    options: {
+      scales: {
+        x: {
+          title: {
+            display: true,
+            text: 'GDP指数'
+          }
+        },
+        y: {
+          title: {
+            display: true,
+            text: '生活质量指数'
+          }
+        }
+      }
+    }
+  });
+
+  const url = await ChartService.generateChartUrl(config);
+  console.log("气泡图 URL:", url);
+  
+  const outputPath = path.join(outputDir, "bubble-chart.png");
+  await downloadImage(url, outputPath);
+  console.log("气泡图已保存到:", outputPath);
+}
+
+/**
+ * 测试堆叠柱状图
+ */
+async function testStackedBarChart(outputDir: string) {
+  const config = ChartService.generateChartConfig({
+    type: "bar",
+    title: "季度销售构成",
+    labels: ["Q1", "Q2", "Q3", "Q4"],
+    datasets: [
+      {
+        label: "产品A",
+        data: [300, 400, 350, 500],
+        backgroundColor: "rgba(255, 99, 132, 0.5)",
+      },
+      {
+        label: "产品B",
+        data: [200, 300, 400, 450],
+        backgroundColor: "rgba(54, 162, 235, 0.5)",
+      },
+      {
+        label: "产品C",
+        data: [100, 200, 300, 350],
+        backgroundColor: "rgba(255, 206, 86, 0.5)",
+      }
+    ],
+    options: {
+      scales: {
+        x: {
+          stacked: true
+        },
+        y: {
+          stacked: true,
+          beginAtZero: true
+        }
+      }
+    }
+  });
+
+  const url = await ChartService.generateChartUrl(config);
+  console.log("堆叠柱状图 URL:", url);
+  
+  const outputPath = path.join(outputDir, "stacked-bar-chart.png");
+  await downloadImage(url, outputPath);
+  console.log("堆叠柱状图已保存到:", outputPath);
 }
 
 /**

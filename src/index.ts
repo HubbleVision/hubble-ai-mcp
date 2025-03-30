@@ -9,16 +9,14 @@ import {
 import { SERVER_CONFIG } from "./config/constants.js";
 import { ToolRegistry } from "./tools/toolRegistry.js";
 import { ErrorHandler } from "./utils/errors.js";
+import { GenerateChartTool } from "./tools/generateChartTool.js";
 
 // Create server instance
-const server = new Server(
-  SERVER_CONFIG,
-  {
-    capabilities: {
-      tools: {},
-    },
-  }
-);
+const server = new Server(SERVER_CONFIG, {
+  capabilities: {
+    tools: {},
+  },
+});
 
 // Initialize tool registry
 const toolRegistry = new ToolRegistry();
@@ -45,10 +43,12 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
 async function main() {
   const transport = new StdioServerTransport();
   await server.connect(transport);
+
   console.error("Hubble MCP Server running on stdio");
 }
 
 main().catch((error) => {
   console.error("Fatal error in main():", error);
+
   process.exit(1);
 });
